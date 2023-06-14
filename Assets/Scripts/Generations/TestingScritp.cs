@@ -9,11 +9,14 @@ public class TestingScritp : MonoBehaviour
    
     void Start()
     {
+        //Debug.DrawLine(Vector3.zero, Vector3.one, Color.red, 10); In case it doesnt work
         Rectangle canvas = new Rectangle(transform.position, size);
         Node<Rectangle> root = new Node<Rectangle>(canvas, 0);
         partitioning.Generate(root);
 
         List<Node<Rectangle>> leaves = new();
+        root.Leaves(leaves);
+
 
         for (int i = 0; i < leaves.Count; i++)
             leaves[i].Data.Draw(Color.red, 10);
